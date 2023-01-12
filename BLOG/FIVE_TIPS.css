@@ -1,0 +1,96 @@
+article p{
+	color: #e924cb;
+	font-size: 15px;
+	font-family: cursive;
+}
+h1{
+	font-size: 40px;
+}
+/*h4{
+	font-size: 35px;
+	color: red;
+}*/
+article li{
+	font-size: 20px;
+	color: red;
+}
+#blog-title:hover{
+	color:orange;
+}
+main{
+	display: inline-block;
+	width: 70%;
+}
+aside{
+	display: inline-block;
+	width: 20%;
+	vertical-align: top;
+}
+#author{
+	display: inline-block;
+	width: 20%;
+	vertical-align: top;
+}
+article{
+	display: inline-block;
+	width: 70%;
+}
+#login input{
+	display: block;
+	margin: 6px;
+	background-color: #F7F7F7;
+}
+#subscribe{
+	background-color: black;
+	font-style: sans-serif;
+	color: white;
+	margin-top: 6px;
+	margin-bottom: 20px;
+}
+#login{
+	margin-top: 4px;
+	margin-bottom: 4px;
+	padding-bottom: 6px;
+	border-top: 4px solid black;
+	border-bottom: 4px solid black;
+}
+#search{
+	margin-top: 20px;
+}
+#search button{
+	margin-left: -4px;
+	background-color: black;
+
+}
+#recent_posts{
+	margin-top: 50px;
+	border-top: 4px solid black;
+	line-height: 25px;
+}
+#recent_posts a{
+	color: red;
+	line-height: 25px;
+}
+#recent_comments{
+	margin-top: 50px;
+	border-top: 4px solid black;
+	line-height: 25px;
+}
+#recent_comments p{
+	color: black;
+	display: inline;
+	font-family: serif;
+	font-size: 20px;
+}
+#recent_comments a{
+	color: red;
+	line-height: 25px;
+}
+#categories{
+	margin-top: 50px;
+	border-top: 4px solid black;
+	line-height: 25px;
+}
+#categories a{
+	color: red;
+}
