@@ -261,6 +261,19 @@ main #pop_artists{
 	margin-bottom: 20px;
 	width: 100%;
 }
+main #pop_artists .pop_play{
+	position: relative;
+}
+main #pop_artists .pop_play .pop_play_obj{
+	position: absolute;
+	right: 30%;
+	opacity: 0;
+	color: white;
+	font-size: 100px;
+}
+main #pop_artists .pop_play .pop_play_obj:hover{
+	opacity: 0.8;
+}
 
 /*Song Icons*/
 
@@ -277,6 +290,7 @@ main #pop_artists{
 	width: 150px;
 	border-radius: 50%;
 }
+
 
 /*Masala*/
 
@@ -318,6 +332,10 @@ main #retro img{
 	height: 200px;
 	width: 300px;
 	opacity: 0.5;
+}
+main #retro img:hover{
+	height: 220px;
+	width: 320px;
 }
 main #retro h4{
 	position: absolute;
@@ -431,6 +449,10 @@ main .latest h3{
 		height: 200px;
 		width: 250px;
 	}
+	main #retro img:hover{
+	height: 220px;
+	width: 270px;
+}
 }
 @media screen and (max-width: 1150px){
 	main #retro img{
@@ -440,6 +462,10 @@ main .latest h3{
 	main #retro h4{
 		top: 30%;
 	}
+	main #retro img:hover{
+	height: 180px;
+	width: 235px;
+}
 }
 @media screen and (max-width: 1000px){
 	main #retro img{
@@ -453,6 +479,10 @@ main .latest h3{
 	main #retro{
 		height: 130px;
 	}
+	main #retro img:hover{
+		height: 135px;
+		width: 195px;
+	}
 }
 @media screen and (max-width: 850px){
 	main #retro img{
@@ -464,6 +494,10 @@ main .latest h3{
 	}
 	main #retro{
 		height: 110px;
+	}
+	main #retro img:hover{
+		height: 110px;
+		width: 150px;
 	}
 }
 @media screen and (max-width: 720px){
@@ -478,6 +512,10 @@ main .latest h3{
 	}
 	main #retro{
 		height: 80px;
+	}
+	main #retro img:hover{
+		height: 80px;
+		width: 100px;
 	}
 }
 
@@ -505,7 +543,7 @@ main #queue #queue_list{
 main #queue #queue_list li{
 	width: 20vw;
 	height: 50px;
-	margin-bottom: 10px;"
+	margin-bottom: 10px"
 }
 main #queue #queue_list img{
 	height : 50px;
@@ -566,6 +604,10 @@ main #queue_list img:hover{
 	height: 8vh;
 	width: 100%;
 	background-color: #282828;
+	opacity: 0;
+}
+#music_bar:target{
+	opacity: 1;
 }
 #music_bar div{
 	display: inline-block;
