@@ -1,7 +1,9 @@
 const express = require('express');
 const port = 8000;
-
 const apk = express();
+
+// using remote routes folder 
+apk.use('/', require('./routes/index'));
 
 apk.listen(port, function(err){
     if(err){
