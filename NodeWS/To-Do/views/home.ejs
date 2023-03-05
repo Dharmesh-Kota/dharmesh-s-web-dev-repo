@@ -8,6 +8,7 @@
     </head>
     <body>
         <main>
+            <!-- Data to be sent -->
             <h1>TODO App</h1>
             <form action="/users/sendData" method="post">
                 <div id="descrp" class="div-borders hover">
@@ -21,11 +22,11 @@
                         <label for="#category">CATEGORY</label>
                         <br>
                         <select name="category" id="category" class="input-borders">
-                            <option value="personal">Personal</option>
-                            <option value="school">School</option>
-                            <option value="work">Work</option>
-                            <option value="cleaning">Cleaning</option>
-                            <option value="other">Other</option>
+                            <option value="PERSONAL">Personal</option>
+                            <option value="SCHOOL">School</option>
+                            <option value="WORK">Work</option>
+                            <option value="CLEANING">Cleaning</option>
+                            <option value="OTHER">Other</option>
                         </select>
                     </div>
                     <div id="due-dates" class="hover">
@@ -38,6 +39,31 @@
                     <button type="submit" id="add-task"> <i class="fa-sharp fa-solid fa-plus"></i> Add Task</button>
                 </div>
             </form>
+
+            <!-- Accessing the sent data from the database -->
+
+            <% for(let data of toDoList) {%>
+                <div id="card">
+                    <div id="radio">
+                        <input type="checkbox" name="<%=data._id%>" value="<%=data._id%>">
+                    </div>
+                    <div id='descrp-date'>
+                        <p style="margin:7px 0px;"> <%= data.description %> </p>
+                        <small> <i class="fa-solid fa-calendar"></i> <%= data.date.toDateString() %> </small>
+                    </div>
+                    <div id='cat'>
+                        <button><%= data.category %></button>
+                    </div>
+                </div>
+            <% } %>
+
+            <div id="remove-todo">
+                <button>
+                    <i class="fa-sharp fa-solid fa-trash"></i>
+                    <a href="/removeTask">Remove To-Do</a>
+                </button>
+            </div>
+
         </main>
 
         <script src="/js/home.js"></script>

@@ -7,7 +7,7 @@ body{
     font-size: 15px;
 }
 main{
-    height: 500px;
+    height: auto;
     width: 500px;
     background-color: aliceblue;
     color: rgb(129, 128, 128);
@@ -20,6 +20,7 @@ h1{
     border: none;
     background-color: aliceblue;
     background: transparent;
+    outline: none;
 }
 
 .div-borders{
@@ -54,7 +55,60 @@ h1{
     border: none;
     background-color: rgb(68, 68, 68);
     color: aliceblue;
-    margin: 25px;
+    margin-top: 25px;
+    margin-bottom: 10px;
     position: relative;
-    left: 33%;
+    left: 40%;
+}
+
+/* Cards */
+
+#card{
+    border-top: 1px solid rgb(129, 128, 128);
+    position: relative;
+    width: 100%;
+    /* height: 50%;
+    overflow: scroll; */
+    color: rgb(91, 91, 91);
+    margin-top: 10px;
+}
+#card > div{
+    display: inline-block;
+}
+#card #descrp-date{
+    width: 70%;
+    height: auto;
+}
+#card #cat{
+    position: absolute;
+    width: 20%;
+    top: 25%;
+}
+#card #cat button{
+    text-align: center;
+    color: aliceblue;
+    border: none;
+    height: 30px;
+    width: 100%;
+}
+
+/* Remove Button */
+
+#remove-todo{
+    position: relative;
+}
+#remove-todo button{
+    height: 30px;
+    width: 130px;
+    border: none;
+    background-color: red;
+    color: aliceblue;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    position: relative;
+    left: 40%;
+}
+#remove-todo button a{
+    text-decoration: none;
+    color: aliceblue;
 }

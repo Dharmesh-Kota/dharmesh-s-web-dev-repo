@@ -12,3 +12,20 @@ document.addEventListener('mouseover', function(){
         })
     }
 });
+
+// Background color of Category
+
+var catgry = document.querySelectorAll('#card #cat button');
+for(let cat of catgry){
+    if(cat.innerHTML == "PERSONAL"){
+        cat.style.backgroundColor = "violet";
+    } else if(cat.innerHTML == "WORK"){
+        cat.style.backgroundColor = "darkgreen";
+    } else if(cat.innerHTML == "SCHOOL"){
+        cat.style.backgroundColor = "red";
+    } else if(cat.innerHTML == "CLEANING"){
+        cat.style.backgroundColor = "orange";
+    } else {
+        cat.style.backgroundColor = "blue";
+    }
+}
