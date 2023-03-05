@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    background-color: rgb(153, 237, 237);
+    text-align: center;
+}
+form input{
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: aliceblue;
+}
+form button{
+    background-color: gray;
+    border: none;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+}
