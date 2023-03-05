@@ -4,7 +4,6 @@ const router = express.Router();
 
 const controllerIndex = require('../controller/index_controller');
 
-router.get('/', controllerIndex.home);
-router.use('/users', require('./users'));
+router.post('/sendData', controllerIndex.sendData);
 
 module.exports = router;

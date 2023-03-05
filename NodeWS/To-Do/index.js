@@ -17,6 +17,9 @@ app.use(express.urlencoded());
 // accessing the routes folder
 app.use('/', require('./routes/index'));
 
+// setting up mongoDB
+const db = require('./config/mongoose');
+// const todoData = require('./models/todoSchema');
 
 app.listen(port, function(err){
     if(err){

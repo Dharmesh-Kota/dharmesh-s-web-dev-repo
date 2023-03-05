@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <main>
+            <h1>TODO App</h1>
+            <form action="/users/sendData" method="post">
+                <div id="descrp" class="div-borders hover">
+                    <label for="#description">DESCRIPTION</label>
+                    <br>
+                    <input type="text" id="description" name="description" placeholder="What do you need to do?" class="input-borders"
+                    style="width:100%;">
+                </div>
+                <div id="second-row" class="div-borders">
+                    <div id="select" class="hover">
+                        <label for="#category">CATEGORY</label>
+                        <br>
+                        <select name="category" id="category" class="input-borders">
+                            <option value="personal">Personal</option>
+                            <option value="school">School</option>
+                            <option value="work">Work</option>
+                            <option value="cleaning">Cleaning</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div id="due-dates" class="hover">
+                        <label for="#date">DUE DATE</label>
+                        <br>
+                        <input type="date" id="date" name="date" class="input-borders">
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" id="add-task"> <i class="fa-sharp fa-solid fa-plus"></i> Add Task</button>
+                </div>
+            </form>
+        </main>
+
+        <script src="/js/home.js"></script>
+
+    </body>
+</html>

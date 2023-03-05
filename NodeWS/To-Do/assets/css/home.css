@@ -1,0 +1,60 @@
+body{
+    margin: 0;
+    background-color: rgb(193, 192, 192);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+main{
+    height: 500px;
+    width: 500px;
+    background-color: aliceblue;
+    color: rgb(129, 128, 128);
+    font-family: 'Times New Roman', Times, serif;
+}
+h1{
+    text-align: center;
+}
+.input-borders{
+    border: none;
+    background-color: aliceblue;
+    background: transparent;
+}
+
+.div-borders{
+    border-top: 1px solid rgb(129, 128, 128);
+    /* border-bottom: 1px solid rgb(129, 128, 128); */
+}
+#second-row{
+    height: 40px;
+    width: 100%;
+    border-bottom: 1px solid rgb(129, 128, 128);
+    position: relative;
+}
+#second-row > div{
+    display: inline-block;
+}
+#select{
+    width: 50%;
+    height: 100%;
+    border-right: 1px solid rgb(129, 128, 128);
+}
+#select select{
+    width: 100%;
+}
+#due-dates{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+}
+#add-task{
+    height: 30px;
+    width: 100px;
+    border: none;
+    background-color: rgb(68, 68, 68);
+    color: aliceblue;
+    margin: 25px;
+    position: relative;
+    left: 33%;
+}
