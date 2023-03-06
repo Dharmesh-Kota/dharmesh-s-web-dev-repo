@@ -1,3 +1,5 @@
+const { findByIdAndDelete } = require('../models/todoSchema');
+
 module.exports.home = function(req, res){
     
     const TodoData = require('../models/todoSchema');
@@ -33,12 +35,11 @@ module.exports.sendData = function(req, res){
 
 module.exports.removeTask = function(req, res){
     const TodoData = require('../models/todoSchema');
-    // let id = document.querySelectorAll('#card #radio input');
-    // for(let ids of id){
-    //     TodoData.findByIdAndDelete(ids, function(err){
-    //         console.log('Error encountered while removing a task from ToDo..!');
-    //         return; 
-    //     })
-    // }
+    let id = req.query.id;
+    for(let ids of id){
+        TodoData.findByIdAndDelete(ids, function(err){
+            if(err) console.log('Error occured while removing the task from database..!');
+        });
+    }        
     return res.redirect('/');
 }

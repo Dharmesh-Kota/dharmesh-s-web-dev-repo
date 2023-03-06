@@ -41,11 +41,12 @@
             </form>
 
             <!-- Accessing the sent data from the database -->
-
+            <% var id = new Array();
+            var count = 0 %>
             <% for(let data of toDoList) {%>
                 <div id="card">
                     <div id="radio">
-                        <input type="checkbox" name="<%=data._id%>" value="<%=data._id%>">
+                        <input type="checkbox" name="<%=data._id%>" value="<%=data._id%>" id="<%=data._id%>">
                     </div>
                     <div id='descrp-date'>
                         <p style="margin:7px 0px;"> <%= data.description %> </p>
@@ -60,7 +61,7 @@
             <div id="remove-todo">
                 <button>
                     <i class="fa-sharp fa-solid fa-trash"></i>
-                    <a href="/removeTask">Remove To-Do</a>
+                    <a href="/removeTask/?id=">Remove To-Do</a>
                 </button>
             </div>
 

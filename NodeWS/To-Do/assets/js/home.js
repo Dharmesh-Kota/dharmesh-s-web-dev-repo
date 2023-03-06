@@ -29,3 +29,15 @@ for(let cat of catgry){
         cat.style.backgroundColor = "blue";
     }
 }
+
+// Removing Tasks
+
+var ids = document.querySelectorAll('#card #radio input');
+
+document.addEventListener('click', function(){
+    for(let id of ids){
+        if(id.checked == true){
+            document.querySelector('#remove-todo button a').href += id.value + "&id=";
+        }
+    }
+});
