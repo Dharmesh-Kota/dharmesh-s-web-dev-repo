@@ -2,11 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 
-const controllerUsers = require('../controller/users_controller'); //accessing the corresponding controller file
+const controllerIndex = require('../controller/users_controller');
 
-router.get('/profile', controllerUsers.profile);
-router.get('/data', controllerUsers.data);
-router.post('/dataPost', controllerUsers.dataPost);
-
+router.get('/newuser', controllerIndex.newUser);
 
 module.exports = router;

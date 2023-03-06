@@ -3,8 +3,28 @@
         <title>
             <%= title %>
         </title>
+        <link rel="stylesheet" href="/css/home.css">
     </head>
     <body>
-        <h1>View Engine EJS established successfully</h1>
+        
+        <main>
+            <header>
+                <h1>D-Tox</h1>
+            </header>
+            <form action="/users/dataPost" method="post">
+                <div id="email">
+                    <label for="#email">E-Mail :&nbsp; &nbsp;</label>
+                    <input type="text" name="email" id="email" placeholder="abc@example.com" class="borders">
+                </div>
+                <div id="password">
+                    <label for="#pass">Password: </label>
+                    <input type="text" id="pass" name="pass" class="borders">
+                </div>
+                <button type="submit" class="borders" id="submit">Submit</button>
+                <div id="newUser">
+                    <p>New User? <a href="/users/newuser">Sign Up here</a></p>
+                </div>
+            </form>    
+        </main>
     </body>
 </html>
