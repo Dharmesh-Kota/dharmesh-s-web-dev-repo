@@ -1,19 +1,25 @@
 const express = require('express');
 const port = 8000;
 const apk = express();
+const cookieParser = require('cookie-parser');
 
-// setting up ejs
-apk.set('view engine', 'ejs');
-apk.set('views', './views');
-
-// giving access to statics
-apk.use(express.static('assets'));
+// access to the database
+const db = require('./config/mongoose');
 
 // using middlewares
 apk.use(express.urlencoded());
 
 // using remote routes folder 
 apk.use('/', require('./routes/index'));
+
+// giving access to statics
+apk.use(express.static('assets'));
+
+// setting up ejs
+apk.set('view engine', 'ejs');
+apk.set('views', './views');
+
+apk.use(cookieParser);
 
 apk.listen(port, function(err){
     if(err){
