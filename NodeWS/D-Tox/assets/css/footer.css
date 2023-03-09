@@ -1,0 +1,19 @@
+footer {
+  height: 40px;
+  width: 100%;
+  color: aliceblue;
+  font-size: 20px;
+  position: absolute;
+  bottom: 0%;
+  background-color: #505050; }
+  footer #rights {
+    position: absolute;
+    top: 15%;
+    left: 1%; }
+  footer #Home {
+    position: absolute;
+    top: 15%;
+    right: 1%; }
+    footer #Home a {
+      text-decoration: none;
+      color: aliceblue; }

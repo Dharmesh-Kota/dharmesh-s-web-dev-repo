@@ -1,0 +1,12 @@
+body{
+    background-image: url('../images/loginPage.jpg');
+    background-size: cover;
+    main{
+        // height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 50px;
+    }
+}

@@ -1,11 +1,35 @@
 const User = require('../models/userModel');
 
-module.exports.newUser = function(req, res){
+module.exports.signUp = function(req, res){
+    
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
     return res.render('signUp', {
-        title: 'D-Tox | Sign Up'
+        title: 'D-Tox | Sign Up',
     });
 };
-module.exports.signUp = function(req, res){
+
+module.exports.signIn = function(req, res){
+
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
+    return res.render('signIn', {
+        title: 'D-Tox | Sign-In',
+    })
+}
+
+module.exports.profile = function(req, res){
+    return res.render('profile', {
+        title: 'D-Tox | Profile'
+    });
+}
+
+module.exports.createUser = function(req, res){
+
     if(req.body.repass != req.body.password){
         return res.redirect('back');
     }
@@ -21,6 +45,15 @@ module.exports.signUp = function(req, res){
             return res.redirect('back');
         }
     });
-    // console.log(req.body);
-    // return res.redirect('/');
+}
+
+module.exports.createSession = function(req, res){
+    return res.redirect('/');
+}
+
+module.exports.clearSession = function(req, res){
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+    });
 }

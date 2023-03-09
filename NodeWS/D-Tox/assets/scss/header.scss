@@ -1,0 +1,26 @@
+header{
+    position: relative;
+    width: 99vw;
+    height: 50px;
+    div{
+        display: inline-block;
+    }
+    #dTox{
+        color: #efff00;
+        font-size: 40px;
+        position: absolute;
+        left: 0%;
+        margin-left: 10px;
+    }
+    #logs{
+        position: absolute;
+        right: 0%;
+        bottom: 0%;
+        a{
+            text-decoration: none;
+            color: #efff00;
+            font-size: 25px;
+            margin-left: 20px;
+        }
+    }
+}

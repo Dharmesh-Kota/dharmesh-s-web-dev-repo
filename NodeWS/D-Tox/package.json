@@ -13,9 +13,19 @@
   "author": "Dharmesh Kota",
   "license": "ISC",
   "dependencies": {
+    "@types/node-sass-middleware": "^0.0.32",
+    "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
-    "mongoose": "^6.10.0"
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "modules": "^0.4.0",
+    "mongoose": "^6.10.0",
+    "node": "^19.6.1",
+    "node-sass": "^8.0.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "sass": "^1.58.3"
   }
 }

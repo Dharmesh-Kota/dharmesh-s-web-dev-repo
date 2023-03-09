@@ -1,0 +1,23 @@
+footer{
+    height: 40px;
+    width: 100%;
+    color: aliceblue;
+    font-size: 20px;
+    position: absolute;
+    bottom: 0%;
+    background-color: rgb(80, 80, 80);
+    #rights{
+        position: absolute;
+        top: 15%;
+        left: 1%;
+    }
+    #Home{
+        position: absolute;
+        top: 15%;
+        right: 1%;
+        a{
+            text-decoration: none;
+            color: aliceblue;
+        }
+    }
+}
