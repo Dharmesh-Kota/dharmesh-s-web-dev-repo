@@ -8,11 +8,18 @@ const postSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-    }
+    },
+    // including the array of ids of all the comments in this schema itself
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ]
 }, {
     timestamps: true
 });
 
-const Post = mongoose.Model('Post', postSchema);
+const Post = mongoose.model('Post', postSchema);
 
 module.exports = Post;

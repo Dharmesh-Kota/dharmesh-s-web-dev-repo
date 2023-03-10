@@ -43,7 +43,7 @@ apk.use(expressLayouts);
 apk.set('layout extractStyles', true);
 apk.set('layout extractScripts', true);
 
-// setting up ejs
+// setting up ejs and giving access to the views folder
 apk.set('view engine', 'ejs');
 apk.set('views', './views');
 
