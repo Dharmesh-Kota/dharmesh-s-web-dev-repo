@@ -1,36 +1,29 @@
 const Post = require('../models/posts');
+const User = require('../models/userModel');
 
-module.exports.home = function(req, res){
-    // Post.find({}, function(err, posts){
-    //     if(err) {
-    //         console.log('Error in finding the post content from database');
-    //         return res.redirect('back');
-    //     }
+module.exports.home = async function(req, res){
 
-    //     return res.render('home', {
-    //         title: 'D-Tox | Login',
-    //         posts: posts
-    //     });
-    // });
-
-    Post.find({})
-    .populate('user')
-    .populate({
-        path: 'comments',
-        populate: {
-            path: 'user'
-        }
-    })
-    .exec(function(err, posts){
-        if(err) {
-            console.log('Error in finding the post content from database');
-            return res.redirect('back');
-        }
-
+    try{
+        let posts = await Post.find({})
+        .sort('-createdAt')
+        .populate('user')
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'user'
+            }
+        })
+        
+        let users = await User.find({});
+        
         return res.render('home', {
             title: 'D-Tox | Login',
-            posts: posts
-        });
-    });
-
+            posts: posts,
+            all_users: users
+        });   
+    } catch (err) {
+        console.log('Error: ', err);
+        return;
+    }
+         
 }

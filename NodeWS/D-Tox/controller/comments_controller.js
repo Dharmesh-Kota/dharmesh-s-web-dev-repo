@@ -1,29 +1,79 @@
 const Comment = require('../models/comments');
 const Post = require('../models/posts');
 
-module.exports.create = function(req, res){
-    Post.findById(req.body.post, function(err, post){
-        if(err){
-            console.log('Error in finding the post related to the comment in database');
-            return('back');
-        } 
+module.exports.create = async function(req, res){
+    try{
+        let post = await Post.findById(req.body.post);
+    
         if(post){
-            Comment.create({
+            let comments = await Comment.create({
                 content: req.body.content,
                 post: req.body.post,
                 user: req.user._id
-            }, function(err, comments){
-                if(err){
-                    console.log('Error in relating the comment');
-                    return res.redirect('back');
-                }
-                // updating the comments array added in posts
-                post.comments.push(comments); 
-                post.save();
-
-                return res.redirect('/');
             });
+        
+            // updating the comments array added in posts
+            post.comments.push(comments); 
+            post.save();            
+
+            if(req.xhr){
+
+                // populate
+                comments = await comments.populate('user');
+
+                return res.status(200).json({
+                    data: {
+                        comment: comments
+                    },
+                    message: 'Comment Created'
+                });
+
+            }
+
+
+            req.flash('success', 'Comment added successfully!');
+
+            return res.redirect('/');
+        }
+    } catch (err) {
+        console.log('Error: ',err);
+    }
+}
+
+module.exports.destroy = async function(req, res){
+    
+    try{
+        let comment = await Comment.findById(req.params.id);
+
+        if(comment.user == req.user.id){
+    
+            let postId = comment.post;
+            comment.remove();
+    
+            let post = Post.findByIdAndUpdate(postId, {
+                $pull: {
+                    comments: req.params.id
+                }
+            }); 
+            
+            if(req.xhr){
+                return res.status(200).json({
+                    data: {
+                        comment_id: req.params.id
+                    },
+                    message: 'Comment Deleted!'
+                });
+            }           
+
+            req.flash('error', 'Comment removed successfully!');
+    
+            return res.redirect('back');
+    
+        } else {
+            return res.redirect('back');
         }
 
-    })
+    } catch (err) {
+        console.log('Error: ', err);
+    }
 }

@@ -5,10 +5,28 @@
     </head>
     <body>
         <main>
-            <h1>Profile Section</h1>
-            <p>First name: <%= user.fname %></p>
-            <p>Last Name: <%= user.lname %></p>
-            <p>E-Mail: <%= user.email %></p>
+
+            <img src="<%= user.avatar %>" alt="<%= user.fname %>" width="100">
+
+            <% if(user.id == profile_user.id) {%> 
+                <h1>Profile Section</h1>
+                <p>First name: <%= profile_user.fname %></p>
+                <p>Last Name: <%= profile_user.lname %></p>
+                <p>E-Mail: <%= profile_user.email %></p>
+                <form action="/users/update/<%=profile_user.id%>" enctype="multipart/form-data" method="post">
+                    <input type="text" name="fname" value="<%=profile_user.fname%>" placeholder="Enter first name" required>
+                    <input type="text" name="lname" value="<%=profile_user.lname%>" placeholder="Enter last name" required>
+                    <input type="email" name="email" value="<%=profile_user.email%>" placeholder="Enter your E-Mail" required>
+                    <input type="file" name="avatar" placeholder="Profile Picture!">
+                    <button type="submit">Update</button>
+                </form>
+            <%} else { %>
+                <h1>Profile Section</h1>
+                <p>First name: <%= profile_user.fname %></p>
+                <p>Last Name: <%= profile_user.lname %></p>
+                <p>E-Mail: <%= profile_user.email %></p>
+            <% } %>
+
         </main>
     </body>
 </html>

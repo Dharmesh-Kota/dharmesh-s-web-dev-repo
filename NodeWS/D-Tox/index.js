@@ -21,6 +21,11 @@ const MongoStore = require('connect-mongo');
 
 // node-sass-middleware access
 const sassMiddleware = require('node-sass-middleware');
+
+// access to connect-flash package for flash notifications
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
+
 apk.use(sassMiddleware({
     src: './assets/scss',
     dest: './assets/css',
@@ -36,7 +41,10 @@ apk.use(express.urlencoded());
 apk.use(cookieParser());
 
 // giving access to statics
-apk.use(express.static('assets'));  
+apk.use(express.static('assets')); 
+
+// making the upload files available in the browser
+apk.use('/uploads', express.static(__dirname + '/uploads'));
 
 // express-ejs-layout middleware to extract styles and scripts from sub pages into the layouts.
 apk.use(expressLayouts);
@@ -71,6 +79,9 @@ apk.use(passport.session());
 
 // handling the checkAuthenticated function for evry request as a middleware
 apk.use(passport.setAuthenticatedUser);
+
+apk.use(flash());
+apk.use(customMware.setFlash);
 
 // using remote routes folder 
 apk.use('/', require('./routes/index'));

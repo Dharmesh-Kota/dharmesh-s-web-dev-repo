@@ -9,7 +9,9 @@ router.get('/signUp', controllerIndex.signUp);
 router.get('/signIn', controllerIndex.signIn);
 router.post('/createUser', controllerIndex.createUser);
 
-router.get('/profile', passport.checkAuthentication, controllerIndex.profile);
+router.post('/update/:id', passport.checkAuthentication, controllerIndex.update);
+
+router.get('/profile/:id', passport.checkAuthentication, controllerIndex.profile);
 
 // use passport as a middleware to authenticate the user
 router.post('/createSession', passport.authenticate(

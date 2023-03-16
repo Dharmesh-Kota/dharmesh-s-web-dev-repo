@@ -6,4 +6,6 @@ const controllerIndex = require('../controller/comments_controller');
 
 router.post('/create', passport.checkAuthentication,controllerIndex.create);
 
+router.get('/destroy/:id', passport.checkAuthentication, controllerIndex.destroy);
+
 module.exports = router;
