@@ -14,18 +14,18 @@ body{
     // background-image: url('../images/main.jpg');
     // background-size: cover;
     background-color: aliceblue;
-    height: 450px;
+    height: 500px;
     width: 500px;
     font-family: 'Times New Roman', Times, serif;
     font-size: large;
     color: rgb(107, 107, 107);
 }
-main form{
+#main form{
     width: 70%;
     height: 80%;
     margin: 0px 70px;
 }
-main form > div{
+#main form > div{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -37,7 +37,7 @@ main form > div{
     height: 30px;
     width: 200px;
 }
-main #submit{
+#main #submit{
     background-color: rgb(53, 144, 228);
     height: 30px;
     width: 100px;
@@ -46,7 +46,7 @@ main #submit{
     color: aliceblue;
     margin: 20px 120px;
 }
-main #submit:hover{
+#main #submit:hover{
     background-color: whitesmoke;
     color: rgb(53, 144, 228);
 }

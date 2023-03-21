@@ -1,5 +1,6 @@
 const Comment = require('../models/comments');
 const Post = require('../models/posts');
+const commentMailer = require('../mailers/comment_mailer');
 
 module.exports.create = async function(req, res){
     try{
@@ -16,10 +17,12 @@ module.exports.create = async function(req, res){
             post.comments.push(comments); 
             post.save();            
 
+            comments = await comments.populate('user');
+            commentMailer.newComment(comments)
+
             if(req.xhr){
 
                 // populate
-                comments = await comments.populate('user');
 
                 return res.status(200).json({
                     data: {

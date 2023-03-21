@@ -10,6 +10,7 @@ router.use('/users', require('./users')); //redirected to controller rendering l
 router.use('/posts', require('./posts')); //redirected to controller rendering localhost/posts/... section
 router.use('/comments', require('./comments')); //redirected to controller rendering localhost/comments/... section
 
+router.use('/api', require('./api'));
 
 
 // console.log("Router folder working okay!!");
