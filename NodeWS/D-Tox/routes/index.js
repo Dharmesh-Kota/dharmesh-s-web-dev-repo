@@ -9,6 +9,8 @@ router.get('/', controllerIndex.home); //redirected to controller rendering home
 router.use('/users', require('./users')); //redirected to controller rendering localhost/users/... section
 router.use('/posts', require('./posts')); //redirected to controller rendering localhost/posts/... section
 router.use('/comments', require('./comments')); //redirected to controller rendering localhost/comments/... section
+router.use('/resetPassword', require('./resetPassword')); //router to reset password
+router.use('/likes', require('./likes'));
 
 router.use('/api', require('./api'));
 

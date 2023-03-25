@@ -1,4 +1,7 @@
 const User = require('../models/userModel');
+const resetPassword = require('../models/resetPassword');
+const resetPasswordMailer = require('../mailers/reset_password_mailer');
+const crypto = require('crypto');
 const path = require('path');
 const fs = require('fs');
 
@@ -100,4 +103,35 @@ module.exports.update = async function(req, res){
     } else {
         return res.status(401).send('Unauthorized User');
     }
+}
+
+module.exports.getEmail = function(req, res){
+    return res.render('getEmail', {
+        title: 'Forgot Passowrd?'
+    });
+}
+
+module.exports.createToken = async function(req, res){
+
+    try {
+
+        let user = await User.findOne({email: req.body.email});        
+        
+        let token = await resetPassword.create({
+            user: user,
+            accessToken: crypto.randomBytes(20).toString('hex'),
+            isValid: true
+        });
+
+        token = await token.populate('user', 'email fname lname');
+
+        resetPasswordMailer.resetPassword(token);
+
+        // await console.log(token);
+        return res.redirect('/users/signIn');
+
+    } catch (err) {
+        console.log('Error: ', err);
+    }
+
 }
