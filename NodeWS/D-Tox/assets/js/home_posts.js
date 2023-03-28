@@ -12,10 +12,27 @@
                 data: newPostForm.serialize(),
                 success: function(data){
                     let newPost = newPostDom(data.data.post);
+
+                    // call the create comment class
+                    new PostComments(data.data.post._id);
+
+                    // enableing the toggle-like functionality on newly created post
+                    new ToggleLike($(' .toggle-like-button', newPost));
+
                     $('#posts-container>ul').prepend(newPost);
+
+                    // Calling the delete post function on newly created Post
                     deletePost($(' .delete-post-button', newPost));
                     // console.log(data);
-                    new PostComments(data.data.post._id);
+
+                    new Noty({
+                        theme: 'relax',
+                        text: "Post published!",
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 1500
+                        
+                    }).show();
 
                 }, error: function(err){
                     console.log(err.responseText);
@@ -38,6 +55,12 @@
                         <small>
                         ${ post.user.fname} ${ post.user.lname } <br>
                             ${ post.user.email }
+                        </small>
+
+                        <small>
+                                <a href="/likes/toggle/?id=${post._id}&type=Post" class="toggle-like-button" data-likes="0">
+                                    0 Likes
+                                </a>                           
                         </small>
                         
                         <div id="comment-container">
@@ -80,12 +103,15 @@
 
     // Posts traversal for access to remove all the posts
     let traverse = function(){
-        let postContainer = $('#posts-container>ul>li');
-        for(let post of postContainer){
-            deletePost($(' .delete-post-button', post));
-            let postId = post.id.split('-')[1];
+        $('#posts-list-container>ul>li').each(function(){
+            let self = $(this);
+            let deleteButton = $(' .delete-post-button', self);
+            deletePost(deleteButton);
+
+            // get the post's id by splitting the id attribute
+            let postId = self.prop('id').split("-")[1]
             new PostComments(postId);
-        }
+        });
     }
 
     createPost();

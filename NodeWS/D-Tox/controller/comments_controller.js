@@ -3,6 +3,7 @@ const Post = require('../models/posts');
 const commentMailer = require('../mailers/comment_mailer');
 const queue = require('../config/kue');
 const commentEmailWorker = require('../workers/comment_email_worker');
+const Like = require('../models/like');
 
 module.exports.create = async function(req, res){
     try{
@@ -69,6 +70,8 @@ module.exports.destroy = async function(req, res){
                     comments: req.params.id
                 }
             }); 
+
+            Like.deleteMany({likeable: comment._id, onModel: 'Comment'});
             
             if(req.xhr){
                 return res.status(200).json({

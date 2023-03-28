@@ -34,9 +34,15 @@ class PostComments{
                 url: '/comments/create',
                 data: $(self).serialize(),
                 success: function(data){
+
                     let newComment = pSelf.newCommentDom(data.data.comment);
                     $(`#post-comment-${postId}`).prepend(newComment);
+
+                    // enabling the delete comment functionality on a newly created comment                  
                     pSelf.deleteComment($(' .destroy-comments', newComment));
+
+                    // enabling the toggle-like functionality on newly created comment
+                    new ToggleLike($(' .toggle-like-button', newComment));
 
                     new Noty({
                         theme: 'relax',
@@ -64,6 +70,11 @@ class PostComments{
                     <a href="/comments/destroy/${comment._id}" class="destroy-comments">X</a>
                     ${ comment.content } <br>
                     <small>${ comment.user.fname + " " + comment.user.lname }</small>
+                    <small>
+                        <a href="/likes/toggle/?id=${post._id}&type=Post" class="toggle-like-button" data-likes="0">
+                            0 Likes
+                        </a>                           
+                    </small>      
                 </p>
             </li>`);
     }

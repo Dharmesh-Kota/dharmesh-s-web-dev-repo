@@ -6,19 +6,19 @@ module.exports.toggleLike = async function(req, res){
     try {
         
         // /likes/toggle/?id=abcd&type=Post/Comment
-        likeable;
-        deleted = false;
+        let likeable;
+        let deleted = false;
 
         if(req.query.type == 'Post'){
-            likeable = Post.findById(req.query.id).populate('likes');   
+            likeable = await Post.findById(req.query.id).populate('likes');   
         } else {
-            likeable = Comment.findById(req.query.id).populate('likes');
+            likeable = await Comment.findById(req.query.id).populate('likes');
         }
 
         let existingLike = await Like.findOne({
             user: req.user._id,
             likeable: req.query.id,
-            type: req.query.type
+            onModel: req.query.type
         });
 
         if(existingLike){
@@ -34,16 +34,23 @@ module.exports.toggleLike = async function(req, res){
             let newLike = await Like.create({
                 user: req.user._id,
                 likeable: req.query.id,
-                type: req.query.type
+                onModel: req.query.type
             });
 
             likeable.likes.push(newLike._id);
             likeable.save();
 
         }
+        
+        return res.status(200).json({
+            message: 'Like Request Successful!!',
+            data: {
+                deleted : deleted
+            }
+        });
 
     } catch (err) {
-        return res.json(500, {
+        return res.status(500).json({
             message: 'Internal Server Error!'
         });
     }
