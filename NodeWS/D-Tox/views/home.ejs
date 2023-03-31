@@ -34,6 +34,8 @@
         </ul>
         
     </section>
+
+    <%- include('_chat_box') -%>
     
 </main>
 
@@ -47,4 +49,16 @@
         let self = this;
         let toggleLike = new ToggleLike(self);
     });
+</script>
+
+<!-- friends script -->
+<script src="/js/friendship.js"></script>
+<script>
+    //$('#friend-button').each(function(){
+      //  let self = this;
+        //let friendship = new Friendship(self);
+    //})
+
+    let friendship = new Friendship($('#friend-button'));
+    
 </script>

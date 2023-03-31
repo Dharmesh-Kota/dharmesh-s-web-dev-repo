@@ -11,6 +11,7 @@ router.use('/posts', require('./posts')); //redirected to controller rendering l
 router.use('/comments', require('./comments')); //redirected to controller rendering localhost/comments/... section
 router.use('/resetPassword', require('./resetPassword')); //router to reset password
 router.use('/likes', require('./likes'));
+router.use('/friends', require('./friends'));
 
 router.use('/api', require('./api'));
 

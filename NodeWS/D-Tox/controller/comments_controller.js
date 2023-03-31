@@ -71,7 +71,7 @@ module.exports.destroy = async function(req, res){
                 }
             }); 
 
-            Like.deleteMany({likeable: comment._id, onModel: 'Comment'});
+            Like.deleteMany({likeable: comment._id, onModel: 'Comment'});   
             
             if(req.xhr){
                 return res.status(200).json({
