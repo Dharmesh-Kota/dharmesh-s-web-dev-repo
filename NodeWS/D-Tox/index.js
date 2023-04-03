@@ -31,6 +31,13 @@ const customMware = require('./config/middleware');
 // establishing chat server to run with socket.io
 const chatServer = require('http').Server(apk);
 const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
+var io = require('socket.io')(chatServer, {
+    cors: {
+      origin: "http://localhost:8000",
+      methods: ["GET", "POST"],
+      credentials: true
+    },
+});
 chatServer.listen(5000);
 console.log('Chat Server is listening on the port 5000');
 
