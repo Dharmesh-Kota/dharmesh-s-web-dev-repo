@@ -35,7 +35,8 @@ var io = require('socket.io')(chatServer, {
     cors: {
       origin: "http://localhost:8000",
       methods: ["GET", "POST"],
-      credentials: true
+      credentials: true,
+      transports : ['websockets']
     },
 });
 chatServer.listen(5000);

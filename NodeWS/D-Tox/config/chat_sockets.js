@@ -1,8 +1,9 @@
 module.exports.chatSockets = function(socketServer){
     let io = require('socket.io')(socketServer, {
-        // credentials: true,
-        // transports : ['websocket']
+        transports: ['websockets']
     });
+
+    console.log('Entered the server side file: chat_sockets!');
 
     io.sockets.on('connection', function(socket){
         console.log('New connection recieved: ', socket.id);

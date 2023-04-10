@@ -2,13 +2,13 @@ class Friendship{
 
     constructor(friendButton){
         console.log('Entered the friendship controller!!');
-        this.friendButton = friendButton;
+        this.friendButton = $(`#${friendButton}`);
         this.manageFriend();
     }
 
     manageFriend() {
         
-        $(this.$(friendButton>input)).click(function(e){
+        $(this.friendButton).click(function(e){
         
             e.preventDefault();
             let self = this;
@@ -23,9 +23,9 @@ class Friendship{
     
                 let task = data.data.task;
                 if(task == 'Add'){
-                    $(self.$(friendButton>input)).val('Remove Friend');
+                    $(self.friendButton).val('Remove Friend');
                 } else {
-                    $(self.$(friendButton>input)).val('Add Friend');
+                    $(self.friendButton).val('Add Friend');
                 }
     
             })
