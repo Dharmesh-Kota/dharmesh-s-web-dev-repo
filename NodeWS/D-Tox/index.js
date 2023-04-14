@@ -1,6 +1,9 @@
 const express = require('express');
 const port = 8000;
 const apk = express();
+const env = require('./config/environment')
+const logger = require('morgan')
+const path = require('path')
 const cookieParser = require('cookie-parser');
 
 // access to express-ejs-layouts
@@ -29,26 +32,28 @@ const flash = require('connect-flash');
 const customMware = require('./config/middleware');
 
 // establishing chat server to run with socket.io
-const chatServer = require('http').Server(apk);
-const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
-var io = require('socket.io')(chatServer, {
-    cors: {
-      origin: "http://localhost:8000",
-      methods: ["GET", "POST"],
-      credentials: true,
-      transports : ['websockets']
-    },
-});
-chatServer.listen(5000);
-console.log('Chat Server is listening on the port 5000');
+// const chatServer = require('http').Server(apk);
+// const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
+// var io = require('socket.io')(chatServer, {
+//     cors: {
+//       origin: "http://localhost:8000",
+//       methods: ["GET", "POST"],
+//       credentials: true,
+//       transports : ['websockets']
+//     },
+// });
+// chatServer.listen(5000);
+// console.log('Chat Server is listening on the port 5000');
 
-apk.use(sassMiddleware({
-    src: './assets/scss',
-    dest: './assets/css',
-    debug: true,
-    outputStyle: 'extended',
-    prefix: '/css'
-}));
+if(env.name == 'development'){
+    apk.use(sassMiddleware({
+        src: path.join(__dirname, env.asset_path, 'scss'),
+        dest: path.join(__dirname, env.asset_path, 'css'),
+        debug: true,
+        outputStyle: 'extended',
+        prefix: '/css'
+    }));
+}
 
 // using middlewares
 apk.use(express.urlencoded());
@@ -57,10 +62,14 @@ apk.use(express.urlencoded());
 apk.use(cookieParser());
 
 // giving access to statics
-apk.use(express.static('assets')); 
+apk.use(express.static(env.asset_path));
 
 // making the upload files available in the browser
 apk.use('/uploads', express.static(__dirname + '/uploads'));
+
+// accessing the logging file and the library to clear the trash log files in a particular interval,
+// i.e., rotating-file-stream
+apk.use(logger(env.morgan.mode, env.morgan.options));
 
 // express-ejs-layout middleware to extract styles and scripts from sub pages into the layouts.
 apk.use(expressLayouts);
@@ -74,7 +83,7 @@ apk.set('views', './views');
 // establishing cookie
 apk.use(session({
     name: 'D-Tox',
-    secret: 'blahsomething',
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookies: {

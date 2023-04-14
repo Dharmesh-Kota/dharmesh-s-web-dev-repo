@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" type="text/css" href="/css/home.css">
 
 <main>
     <section id="feed-posts">
@@ -64,12 +64,12 @@
 </script>
 
 <!-- Connecting/Including the socket.io libraries and chat engine -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
-<script src="/js/chat_engine.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
+<script src="/js/chat_engine.js"></script> -->
 
-<!-- Connecting to Chat Engine to establish the connection -->
-<% if (locals.user) {%>
+<!-- Connecting to Chat Engine to establish the connection --> 
+<!-- <% if (locals.user) {%>
 <script>
     new ChatEngine('user-chat-box', '<%= locals.user.email%>'); 
-</script>
-<%}%>
+</script> -->
+<!-- <%}%> -->
