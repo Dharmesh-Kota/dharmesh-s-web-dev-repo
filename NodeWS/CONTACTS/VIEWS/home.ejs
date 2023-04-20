@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> <%= title %></title>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <h1 id="header"> <i class="fa-regular fa-address-book"></i> My Contact List</h1>
+        <ul id="list">
+            <% for (let i of contact_list) { %>
+                <li> 
+                    <div id="details">
+                        <p><%= i.name %></p>
+                        <p>
+                            <%= i.num %>
+                            <a href="/delete-contact/?id=<%= i._id %>"> 
+                                <i class="fas fa-window-close"></i>
+                            </a>
+                        </p>
+                    </div>                   
+                </li>
+            <% } %>
+        </ul>
+        
+        <form action="/create-contact" method="POST">
+            <input type="text" name="name" placeholder="Enter Name" required>
+            <input type="number" name="num" placeholder="Enter Phone " required>
+            <button type="submit">Add Contact</button>
+        </form>
+
+    </body>
+</html>

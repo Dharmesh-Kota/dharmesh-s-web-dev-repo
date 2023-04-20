@@ -42,8 +42,16 @@
     "socket.io": "^4.6.1"
   },
   "devDependencies": {
+    "asset-builder": "^2.0.0",
+    "del": "^7.0.0",
     "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-imagemin": "^8.0.0",
+    "gulp-less": "^5.0.0",
     "gulp-sass": "^5.1.0",
+    "gulp-terser": "^2.1.0",
+    "gulp-webp": "^4.0.1",
     "sass": "^1.62.0"
   }
 }

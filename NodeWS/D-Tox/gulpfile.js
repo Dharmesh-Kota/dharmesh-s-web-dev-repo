@@ -1,33 +1,68 @@
-// import gulp from 'gulp'
+const {src, dest, watch, series} = require('gulp');
+// const sass = require('gulp-sass');
+const prefix = require('gulp-autoprefixer');
+// const minify = require('gulp-clean-css');
+const terser = require('gulp-terser');
+const less = require('gulp-less');
+const cleanCSS = require('gulp-clean-css');
+// const imagemin = require('gulp-imagemin');
+// const imagewebp = require('gulp-webp');
+// const del = require('del');
+const path = require('path');
+const fs = require('fs');
+const assetBuilder = require('asset-builder')('./assets/manifest.json');
 
-// import sass from 'gulp-sass'
-// const sass = require('gulp-sass')(require('sass'));
+// emptying the public assets directory every time in order to cleat the junk files 
+function clean() {
+    return del([ 'public/assets' ]);
+}
 
-// import cssnano from 'gulp-cssnano'
+//scss
+function compile_scss(){
+    return src('./assets/scss/*.scss')
+        .pipe(less())
+        .pipe(prefix('last 2 versions'))
+        .pipe(cleanCSS())
+        .pipe(dest('./public/assets/css'));
+}
 
-// import rev from 'gulp-rev'
+//js
+function jsmin(){
+    return src('./assets/js/*.js')
+        .pipe(terser())
+        .pipe(dest('./public/assets/js'))
+}
 
+//image minify and creating a webp image file
+// function optimize_img(){
+//     return src('./assets/images/*.{jpg, png}')
+//         .pipe(imagemin([
+//             imagemin.mozjpeg({quality: 80, progressive: true}),
+//             imagemin.optipng({optimizationLevel: 2})
+//         ]))
+//         .pipe(dest('./public/assets/images'))
+// }
 
-const gulp = require('gulp');
+// function webp_images(){
+//     return src('./public/assets/images/*.{jpg, png}')
+//         .pipe(imagewebp())
+//         .pipe(dest('./public/assets/images'))
+// }
 
-const sass = require('gulp-sass')(require('sass'));
-const cssnano = require('gulp-cssnano');
+//creating a function to watch any changes the css, js or image files
+function watchTask(){
+    watch('./assets/scss/*.scss', compile_scss);
+    watch('./assets/js/*.js', jsmin);
+    // watch('./assets/images/*.{jpg, png}');
+    // watch('./public/assets/images/*.{jpg, png}', webp_images)
+}
 
-const rev = require('gulp-rev');
-
-gulp.task('css', function(){
-    console.log('minifying css...!');
-    gulp.src('./assets/sass/**/*.scss')
-    .pipe(sass())
-    .pipe(cssnano())
-    .pipe(gulp.dest('./assets.css'))
-
-    return gulp.src('./assets/**/*.css')
-    .pipe(rev())
-    .pipe(gulp.dest('./public/assets'))
-    .pipe(rev.manifest({
-        cwd: 'public',
-        merge: true
-    }))
-    .pipe(gulp.dest('./public/assets'))
-})
+//default gulp
+exports.default = series(
+    // clean,
+    compile_scss,
+    jsmin,
+    // optimize_img,
+    // webp_images,
+    watchTask
+);
