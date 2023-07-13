@@ -61,3 +61,5 @@
 ::1 - - [20/Apr/2023:05:00:19 +0000] "GET /users/profile/6438e17d3ff9da9d9d769525 HTTP/1.1" 304 - "http://localhost:8000/users/profile/6438e17d3ff9da9d9d769525" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
 ::1 - - [20/Apr/2023:05:00:20 +0000] "GET /users/signOut HTTP/1.1" 302 46 "http://localhost:8000/users/profile/6438e17d3ff9da9d9d769525" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
 ::1 - - [20/Apr/2023:05:00:20 +0000] "GET / HTTP/1.1" 200 3543 "http://localhost:8000/users/profile/6438e17d3ff9da9d9d769525" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [23/May/2023:17:30:00 +0000] "GET / HTTP/1.1" 200 3299 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+::1 - - [23/May/2023:17:30:00 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
