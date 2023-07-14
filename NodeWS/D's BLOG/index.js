@@ -17,6 +17,9 @@ const sassMiddleware = require('node-sass-middleware');
 // importing express-sessions used in creating sessions for storing user's data
 const session = require('express-session');
 
+// providing access to the database
+const db = require('./config/mongoose');
+
 // giving access to static files and converting sass files to css using the sass-middleware library
 app.use(sassMiddleware({
     src: path.join(__dirname, 'assets', 'scss'),
@@ -25,6 +28,10 @@ app.use(sassMiddleware({
     outputStyle: 'compressed'
 }));
 
+// using middleware to parse form data into req.body
+app.use(express.urlencoded());
+
+// providing access to static files
 app.use(express.static(path.join(__dirname, 'assets')));
 
 // express-ejs-layout middleware to extract styles and scripts from sub pages into the layouts.
