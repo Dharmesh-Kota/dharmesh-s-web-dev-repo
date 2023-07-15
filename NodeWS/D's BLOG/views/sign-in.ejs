@@ -1,19 +1,27 @@
-<form action="/users/create-session" method="post">
-    <label for="email_username">Username or E-Mail</label> <br>
-    <input type="text" id="email_username" name="email_username" placeholder="username/email@abc.com">
+<link rel="stylesheet" type="text/css" href="\css\sign-in.css">
+<main>
+    <form action="/users/create-session" method="post">
 
-    <br>
+        <div id="signin">
+            <label for="email_username">Username or E-Mail</label> <br>
+            <input type="text" id="email_username" name="email_username" placeholder="username/email@abc.com">
 
-    <label for="password">Password</label> <br>
-    <input type="password" id="password" name="password">
+            <br>
+
+            <label for="password">Password</label> <br>
+            <input type="password" id="password" name="password">
+            
+            <br>
+            
+            <button type="submit" id="submit">LOGIN</button>
+        </div>
+        
+        <div id="newUser">
+            <p>New User?</p> 
+            <div>
+                <a href="/users/sign-up">Register</a>
+            </div>
+        </div>
     
-    <br>
-    
-    <button type="submit" id="submit">Login</button>
-    
-    <br>
-    
-    <div id="newUser">
-        <p>New User? <a href="/users/signUp">Register</a></p>
-    </div>
-</form>
+    </form>
+</main>

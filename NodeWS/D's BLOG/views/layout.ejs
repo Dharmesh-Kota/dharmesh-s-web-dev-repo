@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>D's BLOG</title>
+    <link rel="stylesheet" type="text/css" href="/css/_header.css">
+    <link rel="stylesheet" type="text/css" href="/css/layout.css">
+    <!-- <link rel="stylesheet" href="\_footer.css" type="text/css"> -->
 
     <%- style %>
     
 </head>
 <body>
 
-    <%- include('./header.ejs') %>
+    <%- include('./_header.ejs') %>
 
     <main>
         <%- body %>
     </main>
 
-    <%- include('./footer.ejs') %>
+    <%- include('./_footer.ejs') %>
 
 </body>
 </html>

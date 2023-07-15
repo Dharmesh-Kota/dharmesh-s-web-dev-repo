@@ -1,0 +1,19 @@
+<header>
+
+    <div id="title">
+        <p>D's BLOG</p>
+    </div>
+    
+    <nav>
+        <a href="/">HOME</a>
+        <a href="/">BLOGS</a>
+        
+        <% if (locals.user) { %>
+            <a href="/"><%=user.name%></a>
+            <a href="/users/sign-out">LOGOUT</a>
+        <% } else { %>
+            <a href="/users/sign-in">LOGIN</a>
+        <% } %>
+    </nav>
+    
+</header>

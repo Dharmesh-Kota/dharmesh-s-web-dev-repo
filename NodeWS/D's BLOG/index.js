@@ -34,10 +34,11 @@ const MongoStore = require('connect-mongo');
 
 // giving access to static files and converting sass files to css using the sass-middleware library
 app.use(sassMiddleware({
-    src: path.join(__dirname, 'assets', 'scss'),
-    dest: path.join(__dirname, 'assets', 'css'),
+    src: './assets/scss',
+    dest: './assets/css',
     debug: true,
-    outputStyle: 'compressed'
+    outputStyle: 'compressed',
+    prefix: '/css'
 }));
 
 // using middleware to parse form data into req.body
@@ -47,13 +48,13 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 
 // providing access to static files
-app.use(express.static(path.join(__dirname, 'assets')));
+app.use(express.static('./assets'));
+
+app.use(expressLayouts);
 
 // express-ejs-layout middleware to extract styles and scripts from sub pages into the layouts.
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
-
-app.use(expressLayouts);
 
 // setting up ejs and giving access to the views folder
 app.set('view engine', 'ejs');

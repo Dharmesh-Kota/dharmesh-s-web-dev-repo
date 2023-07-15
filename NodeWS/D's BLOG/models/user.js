@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const path = require('path');
+// const path = require('path');
 
 const userScehma = new mongoose.Schema({
     name: {
