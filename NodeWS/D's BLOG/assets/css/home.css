@@ -1,1 +1,1 @@
-h1{color:#183a1d;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif}
+#welcome{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background-image:url("../images/home_page.jpg");background-size:cover;font-family:'Times New Roman', Times, serif;font-size:3rem;color:#000000}#welcome #link{margin-top:3rem;height:4rem;width:20rem;background-color:#505651;text-align:center}#welcome #link a{text-decoration:none;color:#faf5d9}#welcome #link:hover{background-color:#faf5d9}#welcome #link:hover a{color:#505651}

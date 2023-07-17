@@ -32,6 +32,10 @@ const passportJWT = require('./config/passport-jwt-strategy');
 // giving access to the mongo-connect
 const MongoStore = require('connect-mongo');
 
+// importing the connect-flash library to set up flash notifications and setting up its middleware
+const flash = require('connect-flash');
+const customMware = require('./config/flash_middleware');
+
 // giving access to static files and converting sass files to css using the sass-middleware library
 app.use(sassMiddleware({
     src: './assets/scss',
@@ -85,6 +89,10 @@ app.use(passport.session());
 
 // handling the checkAuthenticated function for evry request as a middleware
 app.use(passport.setAuthenticatedUser);
+
+// using the flash middleware
+app.use(flash());
+app.use(customMware.set_flash);
 
 // using remote routes folder 
 app.use('/', require('./routes/index'));

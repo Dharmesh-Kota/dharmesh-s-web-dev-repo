@@ -10,11 +10,16 @@ module.exports.sign_up = function(req, res){
 
 module.exports.new_user = function(req, res){
     if(req.body.re_password != req.body.password){
+        req.flash('error', 'Passwords are not matching');
         return res.redirect('back');
     }
     User.findOne({ $or: [{ email: req.body.email }, { username: req.body.username }] },
         function(err, user){
-            if(err){console.log('Error in getting the user while signing up!'); return res.redirect('back');}
+            if(err){
+                console.log('Error in getting the user while signing up!');
+                req.flash('error', err);
+                return res.redirect('back');
+            }
 
             if(user){
                 console.log('User already exists with the entered Username/Email, go Sign-In');
@@ -22,20 +27,30 @@ module.exports.new_user = function(req, res){
             }
             
             User.create(req.body, function(err, user){
-                if(err){console.log('Error in getting the user while signing up!'); return res.redirect('back');}
+                if(err){
+                    console.log('Error in getting the user while signing up!'); 
+                    req.flash('error', err);
+                    return res.redirect('back');
+                }
                 
+                req.flash('success', 'Account registered successfully!');
                 return res.redirect('/');
             });
         });
 }
 
 module.exports.create_session = function(req, res){
+    req.flash('success', 'Logged In Successfully!');
     return res.redirect('/');
 }
 
 module.exports.clear_session = function(req, res){
     req.logout(function(err) {
-        if (err) { return res.redirect('back'); }
+        if (err) { 
+            req.flash('err', 'Error while Logging Out!');
+            return res.redirect('back'); 
+        }
+        req.flash('success', 'Logged Out Successfully!');
         res.redirect('/');
     });
 }

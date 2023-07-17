@@ -1,0 +1,66 @@
+footer{
+    width: auto;
+    height: auto;
+    background-color: #f0a555;
+    display: flex;
+    color: #183a1d;
+    #about{
+        width: 60%;
+        padding: 1rem;
+        line-height: 1.3;
+        #box{
+            margin-top: 0.4rem;
+            height: 1.4rem;
+            width: 6rem;
+            border: 1px solid #2e5c35;
+            border-radius: 5%;
+            background-color: #2e5c35;
+            a{
+                text-decoration: none;
+                font-family: Arial, sans-serif;
+                font-size: 1rem;
+                color: #fefbe9;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        #box:hover{
+            background-color: #fefbe9;
+            a{
+                color: #f0a04b;
+            }
+        }
+    }
+    #contact{
+        padding: 1rem;
+        width: 40%;
+        form{
+            textarea{
+                width: 80%;
+                padding: 10px;
+                margin: 0.5rem 0;
+                font-family: Arial, sans-serif;
+                border: none;
+                border: 1px solid #f7e2b2;
+                border-radius: 4px;
+                resize: vertical;
+                background-color: #f7e2b2;
+    
+            }
+            button{
+                border: 1px solid #2e5c35;
+                border-radius: 5%;
+                font-size: 1rem;
+                height: 1.5rem;
+                width: 5rem;
+                background-color: #2e5c35;
+                color: #fefbe9;
+            }
+            button:hover{
+                background-color: #fefbe9;
+                color: #f0a04b;
+            }
+        }
+    } 
+}

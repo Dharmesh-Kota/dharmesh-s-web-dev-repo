@@ -9,13 +9,14 @@ passport.use(new LocalStrategy({
     }, function(req, email_username, password, done){
         User.findOne({ $or: [{ email: email_username }, { username: email_username }] }, function (err, user) {
             if (err) {
-              console.log('Error encountered while finding the user:', err);
-              return done(err);
+                console.log('Error encountered while finding the user:', err);
+                return done(err);
             }
     
             if (!user || user.password != password) {
-              console.log('Invalid Email/Username or Password');
-              return done(null, false);
+                console.log('Invalid Email/Username or Password');
+                req.flash('error', 'Invalid Email/Username or Password');
+                return done(null, false);
             }
     
             return done(null, user);

@@ -4,8 +4,11 @@ main{
     justify-content: center;
 }
 form{
-    background-color: #faeac6;
+    background-color: #faf9f1f2;
+    border: 2px solid #faf9f1f2;
+    border-radius: 2%;
     font-size: 1.2rem;
+    color: #183a1d;
     padding: 0.4rem;
     height: auto;
     width: 350px;
@@ -21,7 +24,8 @@ form{
         align-self: center;
     }
     input{
-        border: none;
+        border: 1px solid #e1eedd;
+        border-radius: 5%;
         background-color: #e1eedd;
         height: 1.5rem;
         width: 12rem;
