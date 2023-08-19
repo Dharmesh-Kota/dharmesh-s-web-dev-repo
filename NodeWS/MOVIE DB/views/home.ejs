@@ -1,0 +1,20 @@
+<link rel="stylesheet" type="text/css" href="\css\home.css">
+
+Hello and Welcome to Movie Database.
+
+<ul id="movie-container">
+    <% for(movie of movies) { %>
+        <li id="<%=movie.movie_name%>-<%=movie.year%>" class="movie-list">
+            <img src="<%=movie.avatar%>" alt="<%=movie.movie_name%>" width="200" height="200">
+            <p>
+                <a href="/movie/<%=movie.id%>"><%=movie.movie_name%></a>
+            </p>
+            <p>
+                <%=movie.year%>
+            </p>
+            <p>
+                <%=movie.rating%>
+            </p>
+        </li>
+    <% } %>
+</ul>

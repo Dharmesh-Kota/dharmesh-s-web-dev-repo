@@ -1,0 +1,35 @@
+<div id="comment-container">
+    <% if(locals.user){%> 
+        <form action="/blogs/comments/create" method="post" id="new-comment-form">
+            <textarea name="content" id="content" cols="30" rows="2" placeholder="Add a comment..."></textarea>
+            <input type="hidden" name="user_id" value="<%= user._id %>">
+            <input type="hidden" name="topic" value="<%= locals.topic %>">
+            <input type="submit" value='Add Comment'>
+        </form>
+    <% } %>
+
+    <div id="comment-list">
+        <ul>
+            <% for(comment of comments) {%>
+                <li id="comment-<%=comment._id%>">
+                    <p>
+                        <% if(locals.user && locals.user.id == comment.user.id){%>
+                            <a href="/blogs/comments/destroy/?id=<%=comment.id%>&topic=<%=locals.topic%>" class="destroy-comments">X</a>
+                        <% } %>
+    
+                        <%= comment.content %>
+                        <br>
+    
+                        <small>
+                            <%=comment.user.name%>
+                        </small>
+                    </p>
+                </li>
+            <% } %>
+        </ul>
+
+    </div>
+
+</div>
+
+<script src="/js/blogs_comment.js"></script>

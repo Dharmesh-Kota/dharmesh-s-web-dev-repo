@@ -1,0 +1,19 @@
+<form action="/add-movie" enctype="multipart/form-data" method="post">
+    <label for="movie_name">Movie Name</label>
+    <input type="text" placeholder="Enter Movie Name" id="movie_name" name="movie_name"> <br>
+
+    <label for="rating">Rating</label>
+    <input type="number" step="0.01" placeholder="Enter Movie's IMDB Rating" id="rating" name="rating"> <br>
+
+    <label for="year">Release Year</label>
+    <input type="number" placeholder="Enter year of release" id="year" name="year"> <br>
+
+    <label for="description">Description</label>
+    <textarea placeholder="Enter small description of movie" id="description" name="description" cols="50" rows="4">
+    </textarea> <br>
+
+    <label for="avatar">Movie Banner</label>
+    <input type="file" name="avatar" id="avatar" placeholder="Movie Banner"> <br>
+
+    <button type="submit">Add Movie</button>
+</form>

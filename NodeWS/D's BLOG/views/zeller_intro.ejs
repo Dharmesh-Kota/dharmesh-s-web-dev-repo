@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/css/blogs_intro.css" type="text/css">
+
+<div id="container">
+    <div id="intro">
+        <%- include('./blogs_likes.ejs', {topic: topic, blog: blog}) %>
+        <div id="title">
+            Zeller's Congrunce
+        </div>
+    </div>
+    <div id="table-of-content">
+        <p>Table of Content:</p>
+        <ul>
+            <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="#">History</a></li>
+            <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="#">Derivation</a></li>
+            <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="#">Different Algorithms</a></li>
+            <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="#">Conway's Mental Calculation</a></li>
+            <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="#">Analysis of the Relation
+                    between different Calendars</a></li>
+
+        </ul>
+    </div>
+</div>
+
+<div id="blogs_footer">
+    <%- include('./blogs_footer.ejs', {topic: topic, comments: comments}) %>
+</div>
